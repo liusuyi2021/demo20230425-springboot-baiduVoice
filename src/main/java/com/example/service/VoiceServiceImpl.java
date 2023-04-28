@@ -40,7 +40,8 @@ public class VoiceServiceImpl implements VoiceService {
         // String token = getToken();
         param.setToken("24.7fc2976d1818ac5848c6223642097a60.2592000.1684998759.282335-10521231");
         param.setCuid("ard");
-        param.setDev_pid(1537);//标准版普通话(纯中文识别)1537  极速版普通话80001
+      //  param.setDev_pid(1537);//标准版普通话(纯中文识别)1537  极速版普通话80001
+        param.setDev_pid(80001);
         String fileContentAsBase64 = getFileContentAsBase64(path);
         byte[] content = new byte[0];
         try {

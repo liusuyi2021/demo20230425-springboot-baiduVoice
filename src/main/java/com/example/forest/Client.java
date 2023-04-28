@@ -6,8 +6,8 @@ import com.example.domain.Param;
 
 public interface Client {
 
-    //String voiceUrl = "https://vop.baidu.com/pro_api";//极速版
-    String voiceUrl = "https://vop.baidu.com/server_api";//标准版
+    String voiceUrl = "https://vop.baidu.com/pro_api";//极速版
+   // String voiceUrl = "https://vop.baidu.com/server_api";//标准版
     String ak = "dcCSIuFAkRydVpiL7KvYiQoN";
     String sk = "aaa4d04fe56acd4259dd98c8043e1002";
     String authHost = "https://aip.baidubce.com/oauth/2.0/token?";

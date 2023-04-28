@@ -1,22 +1,43 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>声音转换</title>
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/HZRecorder.js}"></script>
+    <script th:src="@{/layui/layui.js}"></script>
+    <link th:href="@{/layui/css/layui.css}" th:rel="stylesheet"/>
 </head>
 <body>
-<div>
-    <audio controls autoplay></audio>
-    <input id="start" type="button" value="录音" />
-    <input id="stop" type="button" value="停止" />
-    <input id="play" type="button" value="播放" />
-    <input id="upload" type="button" value="提交" />
-    <div id="text">
+<div class="layui-container">
+    <div class="layui-header"></div>
+    <div class="layui-code-item layui-code-item-preview layui-border layui-show">
+        <div class="layui-row">
+            <div class="layui-col-md6">
+                <audio class="layui-icon layui-icon-headset" controls autoplay></audio>
+            </div>
+            <div class="layui-col-md6">
+                <button class="layui-btn layui-btn-lg" id="start" type="button" value="录音">录音</button>
+                <button class="layui-btn layui-btn-lg" id="stop" type="button" value="停止">停止</button>
+                <button class="layui-btn layui-btn-lg" id="play" type="button" value="播放">播放</button>
+                <button class="layui-btn layui-btn-lg" id="upload" type="button" value="提交">提交</button>
+            </div>
+        </div>
+        <div class="layui-code-item layui-code-item-preview layui-border layui-show">
+            <div class="layui-row">
+                <div id="text"></div>
+            </div>
+        </div>
     </div>
 </div>
-<script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
-<script type="text/javascript" src="HZRecorder.js"></script>
-<script>
+
+
+<script th:inline="javascript">
+    layui.use(function () {
+        var layer = layui.layer;
+        // Welcome
+        layer.msg('Hello World', {icon: 6});
+    });
     var recorder;
     var audio = document.querySelector('audio');
     $("#start").click(function () {

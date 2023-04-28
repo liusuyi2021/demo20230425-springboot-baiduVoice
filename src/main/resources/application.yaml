@@ -1,3 +1,9 @@
+spring:
+  thymeleaf:
+    cache: false
+    mode: HTML
+    prefix: classpath:/templates/
+    suffix: .html
 forest:
   bean-id: config0 # 在spring上下文中bean的id, 默认值为forestConfiguration
   backend: okhttp3 # 后端HTTP API： okhttp3 【支持`okhttp3`/`httpclient`】

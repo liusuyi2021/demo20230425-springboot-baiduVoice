@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.service.VoiceService;
+import com.example.util.IKAnalyzerUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +12,9 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @ClassName: testController
@@ -31,8 +34,9 @@ public class testController {
     {
        return voiceService.getToken();
     }
+
     @PostMapping("/getWord")
-    public String getWord(MultipartFile file) {
+    public  List<String> getWord(MultipartFile file) {
         String path = "G:\\voice-ai\\"+new Date().getTime()+ ".wav";
         File localFile = new File(path);
         try {
@@ -54,11 +58,12 @@ public class testController {
             long etime = System.currentTimeMillis();
             // 计算执行时间
             log.info("执行时长："+(etime-stime)+"毫秒");
-            return text;
+            List<String> list= IKAnalyzerUtil.cut(text);
+            return list;
         } catch (IOException e) {
             e.printStackTrace();
             localFile.delete();
-            return "上传失败"+e.getMessage();
+            return new ArrayList<>();
         }
     }
 }
